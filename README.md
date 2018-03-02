@@ -13,6 +13,8 @@ over-complexed-boiler-plate-free state managment library for React/React Native
 ### No need for Switch and Cases like in Redux, just add different actions as functions
 ### No need to return the default state like in Redux
 ### Xtate doesn't call every single function you mapped, like Redux does with reducers, Xtate knows which one to call!
+### No need for props mapping, global state comes in a separate object
+### No need to wrap your App component with a "Provider" Tag
 
 ```javascript
 import { Xtate } from 'xtate';
@@ -34,7 +36,7 @@ store.action('DELETE_ARTICLE', function(state, payload) {
 export default store
 ```
 
-## And you're done! You read it correctly: You're done. Now just Import your store to your App component. You can access your store state with "this.props.global" (no need for props mapping) and dispatch your actions with "store.dispatch"
+## And you're done! You read it correctly: You're done. Now just Import your store to your App component. You can access your store state with "this.props.global" and dispatch your actions with "store.dispatch"
 
 ```javascript
 import React, { Component } from 'react';
