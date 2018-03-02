@@ -12,7 +12,7 @@ Simple state managment for React/React Native
 ```javascript
 import { Xtate } from 'xtate';
 
-const initialXtate = { articles: [ {id: 1, text: "Initial Article!"} ] }
+const initialXtate = { articles: [] }
 
 const store = new Xtate(initialXtate)
 
