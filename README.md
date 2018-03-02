@@ -2,7 +2,7 @@
 
 ![see module on NPM](https://nodei.co/npm/xtate.png?downloads=true&downloadRank=true&stars=true)
 
-Simple state managment for React/React Native
+over-complexed-boiler-plate-free simple state managment library for React/React Native
  
 ## THIS LIBRARY IS STILL IN DEVELOPMENT, DON'T TRY TO USE IT. BUT STAY TUNED!
 ## Usage
