@@ -1,7 +1,7 @@
 /* global describe, it, before */
 
 import chai from 'chai';
-import { Xtate } from '../lib/webpack-library-starter';
+import { Xtate } from '../lib/xtate.min';
 
 chai.expect();
 

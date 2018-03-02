@@ -1,8 +1,8 @@
 {
-  "name": "webpack-library-starter",
+  "name": "xtate",
   "version": "1.0.2",
-  "description": "Produce universal library with webpack and es6",
-  "main": "lib/webpack-library-stater.min",
+  "description": "Simple State Managment library for React",
+  "main": "lib/xtate.min.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run test",
     "dev": "webpack --progress --colors --watch --env dev",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/krasimir/webpack-library-starter.git"
+    "url": "https://github.com/GabrielBB/xtate.git"
   },
   "keywords": [
     "webpack",
@@ -22,12 +22,11 @@
     "umd",
     "commonjs"
   ],
-  "author": "Krasimir Tsonev",
-  "license": "MIT",
+  "author": "Gabriel Basilio Brito",
   "bugs": {
-    "url": "https://github.com/krasimir/webpack-library-starter/issues"
+    "url": "https://github.com/GabrielBB/xtate/issues"
   },
-  "homepage": "https://github.com/krasimir/webpack-library-starter",
+  "homepage": "https://github.com/GabrielBB/xtate",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
