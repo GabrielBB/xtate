@@ -76,3 +76,4 @@ import App from './App';
 // No need to include a <Provider> ! Render your root component as usual
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
+### State time travelling coming soon and more boiler-plate-free features!
