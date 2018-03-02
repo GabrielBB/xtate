@@ -52,7 +52,7 @@ class App extends Component {
     return (
       <div>
         <button onClick={this.addNewArticle}>Add Article</button>
-        <ul>{this.props.global.articles.map(a => <li key={a.id}>{a.text + ' ' + a.id}</li>)}</ul>
+        <ul>{this.props.global.articles.map(a => <li key={a.id}>{a.id + ' - ' + a.text}</li>)}</ul>
       </div>
 
     );
