@@ -4,7 +4,7 @@
 
 over-complexed-boiler-plate-free state management library for React/React Native
  
-## THIS LIBRARY IS STILL IN DEVELOPMENT, DON'T TRY TO USE IT. BUT STAY TUNED!
+## THIS LIBRARY IS STILL IN DEVELOPMENT, WORKING ON ASYNC ACTIONS
 ## Usage
 
 ## Configure your store with the actions you want to dispatch from your components, no need for reducers, just type a function that returns a state
