@@ -34,7 +34,7 @@ store.action('DELETE_ARTICLE', function(state, payload) {
 export default store
 ```
 
-## And you're done! Import your store to your App component. You can access your store state with "this.props.global" and dispatch your actions with "store.dispatch"
+## And you're done! You read it correctly: You're done. Now just Import your store to your App component. You can access your store state with "this.props.global" and dispatch your actions with "store.dispatch"
 
 ```javascript
 import React, { Component } from 'react';
