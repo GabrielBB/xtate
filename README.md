@@ -19,7 +19,7 @@ const store = new Xtate(initialXtate)
 // No need for Spread Operators like in Redux, i'm already giving you a copy of the store, modify that object as you whish!
 // No need for Switch and Cases like in Redux, just add different actions as functions
 // No need to return the default state like in Redux
-// Xtate just gets the necessary reducers! Not calling every single reducer in every dispatch like Redux does
+// Xtate doesn't call every single function you mapped, like Redux does with reducers, Xtate knows which one to call!
 
 store.action('SAVE_ARTICLE', function(state, payload) {
     state.articles.push(payload)
