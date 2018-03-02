@@ -21,14 +21,14 @@ const store = new Xtate(initialXtate)
 // No need to return the default state like in Redux
 // Xtate just gets the necessary reducers! Not calling every single reducer in every dispatch like Redux does
 
-store.action('SAVE_ARTICLE', function(xtate, payload) {
-    xtate.articles.push(payload)
-    return xtate;
+store.action('SAVE_ARTICLE', function(state, payload) {
+    state.articles.push(payload)
+    return state;
 })
 
-store.action('DELETE_ARTICLE', function(xtate, payload) {
-    xtate.articles.splice(payload, 1)
-    return xtate;
+store.action('DELETE_ARTICLE', function(state, payload) {
+    state.articles.splice(payload, 1)
+    return state;
 })
 
 export default store
