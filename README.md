@@ -7,7 +7,7 @@ Simple state managment for React/React Native
 ## THIS LIBRARY IS STILL IN DEVELOPMENT, DON'T TRY TO USE IT. BUT STAY TUNED!
 ## Usage
 
-##Configure your store with the actions you want to dispatch from any React Component in your app:
+## Configure your store with the actions you want to dispatch from any React Component in your app:
 
 ```javascript
 import { Xtate } from 'xtate';
@@ -34,7 +34,7 @@ store.action('DELETE_ARTICLE', function(xtate, payload) {
 export default store
 ```
 
-##Import your store to your App component. You can access your store state with "this.props.global" and dispatch your actions with "store.dispatch"
+## Import your store to your App component. You can access your store state with "this.props.global" and dispatch your actions with "store.dispatch"
 
 ```javascript
 import React, { Component } from 'react';
@@ -65,7 +65,7 @@ class App extends Component {
 export default store.connect(App, 'SAVE_ARTICLE', 'DELETE_ARTICLE');
 ```
 
-##You don't need to add anything else when rendering your app:
+## You don't need to add anything else when rendering your app:
   
  
 ```javascript
