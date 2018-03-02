@@ -76,7 +76,6 @@ import App from './App';
 // No need to include a <Provider> ! Render your root component as usual
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
-
-![](https://media.giphy.com/media/BCdj4KMUer5mZbAyZV/giphy.gif)
+<img src="https://media.giphy.com/media/BCdj4KMUer5mZbAyZV/giphy.gif" width="800" height="300"/>
 
 ### State time travelling coming soon and more boiler-plate-free features!
