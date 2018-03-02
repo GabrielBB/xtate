@@ -7,7 +7,7 @@ Simple state managment for React/React Native
 ## THIS LIBRARY IS STILL IN DEVELOPMENT, DON'T TRY TO USE IT. BUT STAY TUNED!
 ## Usage
 
-## Configure your store with the actions you want to dispatch from any React Component in your app:
+## Configure your store with the actions you want to dispatch from your components:
 
 ```javascript
 import { Xtate } from 'xtate';
