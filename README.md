@@ -19,7 +19,7 @@ const store = new Xtate(initialXtate)
 // No need for Spread Operators like in Redux, i'm already giving you a copy of the store, modify that object as you whish!
 // No need for Switch and Cases like in Redux, just add different actions as functions
 // No need to return the default state like in Redux
-// ReactEmitter is calling just the correct action, not like Redux who calls every reducer! 
+// Xtate is calling just the correct action, not like Redux who calls every reducer! 
 
 store.action('SAVE_ARTICLE', function(xtate, payload) {
     xtate.articles.push(payload)
