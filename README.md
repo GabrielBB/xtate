@@ -59,7 +59,7 @@ class App extends Component {
   }
 }
 
-// This Component will be re-rendered only when these actions are triggered. This will be optional
+// For the best optimization, this Component will be re-rendered only when these actions are triggered. This will be optional
 export default store.connect(App, 'SAVE_ARTICLE', 'DELETE_ARTICLE');
 ```
 
