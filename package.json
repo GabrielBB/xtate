@@ -1,0 +1,23 @@
+{
+  "name": "xtate",
+  "version": "1.0.0",
+  "description": "Simple State Managment library for React",
+  "main": "xtate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielBB/xtate.git"
+  },
+  "author": "Gabriel Basilio Brito",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GabrielBB/xtate/issues"
+  },
+  "homepage": "https://github.com/GabrielBB/xtate#readme",
+  "dependencies": {
+    "fbemitter": "^2.1.1",
+    "react": "^16.2.0"
+  }
+}
