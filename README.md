@@ -9,7 +9,7 @@ over-complexed-boiler-plate-free state managment library for React/React Native
 
 ## Configure your store with the actions you want to dispatch from your components, no need for reducers, just type a function that returns a state
 
-### No need for Spread Operators like in Redux, i'm already giving you a copy of the store, modify that object as you whish!
+### No need for Spread Operators like in Redux, there's not immutability, modify that object as you whish!
 ### No need for Switch and Cases like in Redux, just add different actions as functions
 ### No need to return the default state like in Redux
 ### Xtate doesn't call every single function you mapped, like Redux does with reducers, Xtate knows which one to call!
