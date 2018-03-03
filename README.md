@@ -4,6 +4,8 @@
 
 over-complexed-boiler-plate-free state management library for React/React Native
 
+NOTE: I'm actively working on this project so if you find any issues, please, open an issue and i will check it out very quick
+
 ## Usage
 
 Configure your store with the actions you want to dispatch from your components, just type a function that returns the next state of your application:
