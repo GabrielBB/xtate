@@ -2,14 +2,14 @@
 
 ![see module on NPM](https://nodei.co/npm/xtate.png?downloads=true&downloadRank=true&stars=true)
 
-over-complexed-boiler-plate-free state managment library for React/React Native
+over-complexed-boiler-plate-free state management library for React/React Native
  
-## THIS LIBRARY IS STILL IN DEVELOPMENT, DON'T TRY TO USE IT. BUT STAY TUNED!
+## THIS LIBRARY IS STILL IN DEVELOPMENT, WORKING ON ASYNC ACTIONS
 ## Usage
 
 ## Configure your store with the actions you want to dispatch from your components, no need for reducers, just type a function that returns a state
 
-### No need for Spread Operators like in Redux, you decide if you want immutability, modify that object as you whish!
+### No need for Spread Operators like in Redux, you decide if you want immutability, modify that object as you wish!
 ### No need for Switch and Cases like in Redux, just add different actions as functions
 ### No need to return the default state like in Redux
 ### Xtate doesn't call every single function you mapped, like Redux does with reducers, Xtate knows which one to call!
@@ -78,4 +78,4 @@ ReactDOM.render(<App />, document.getElementById('root'));
 ```
 <img src="https://media.giphy.com/media/BCdj4KMUer5mZbAyZV/giphy.gif" width="800" height="300"/>
 
-### State time travelling coming soon and more boiler-plate-free features!
+### State time traveling coming soon and more boiler-plate-free features!
