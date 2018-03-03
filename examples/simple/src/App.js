@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import store from './store';
 
-class App extends Component {
+class App extends React.Component {
 
   // The global application state comes from this.props.global and normal parameters are in this.props.local
   addNewArticle = () => {
@@ -37,4 +37,4 @@ class App extends Component {
 }
 
 // This Component will be re-rendered only when these actions are triggered. This will be optional
-export default store.connect(App, 'SAVE_ARTICLE', 'DELETE_ARTICLE');
+export default store.connect(App);

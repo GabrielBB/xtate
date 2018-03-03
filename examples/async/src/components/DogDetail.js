@@ -6,11 +6,11 @@ class DogDetail extends React.Component {
   render() {
     return (
       <div>
-        <img src={this.props.global.message} />
+        {this.props.global.data ? <img src={this.props.global.data.message} /> : null}
       </div>
 
     );
   }
 }
 
-export default store.connect(DogDetail, 'UPDATE_DOG_IMAGE');
+export default store.connect(DogDetail);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { EventEmitter } from 'fbemitter';
 
-export class Xtate extends EventEmitter {
+export default class Xtate extends EventEmitter {
   constructor(initialState = {}, logChanges = false) {
     super();
     this.store = initialState;
@@ -10,7 +10,7 @@ export class Xtate extends EventEmitter {
 
   updateStore = (event, newState) => {
     this.store = newState;
-    super.emit('update' + event);
+    super.emit('_');
 
     // With this im going to try to travel in time with a future dev tools
     // it will probably require immutability like Redux does
@@ -21,7 +21,7 @@ export class Xtate extends EventEmitter {
   }
 
   actionAsync = (event, reducer) => {
-    super.addListener(event, async (payload) => {
+    super.addListener('_' + event, async (payload) => {
       const result = await reducer(this.store, payload);
 
       this.updateStore(event, result);
@@ -30,7 +30,7 @@ export class Xtate extends EventEmitter {
   }
 
   action = (event, reducer) => {
-    super.addListener(event, (payload) => {
+    super.addListener('_' + event, (payload) => {
       const result = reducer(this.store, payload);
 
       this.updateStore(event, result);
@@ -39,18 +39,18 @@ export class Xtate extends EventEmitter {
   }
 
   dispatch = (event, payload) => {
-    super.emit(event, payload);
+    super.emit('_' + event, payload);
   }
 
-  connect = (ChildComponent, ...events) => {
-    const reactEmitter = this;
+  connect = (ChildComponent) => {
+    const xtate = this;
 
     return class extends React.Component {
 
       constructor() {
         super();
 
-        this.state = reactEmitter.store;
+        this.state = xtate.store;
 
         this.addListenerForEvents();
       }
@@ -58,10 +58,8 @@ export class Xtate extends EventEmitter {
       addListenerForEvents() {
         const component = this;
 
-        events.forEach(e => {
-          reactEmitter.addListener('update' + e, () => {
-            component.setState(reactEmitter.store);
-          });
+        xtate.addListener('_', () => {
+          component.setState(xtate.store);
         });
       }
 
