@@ -8,18 +8,34 @@ export class Xtate extends EventEmitter {
     this.logChanges = logChanges;
   }
 
-  action = (event, reducer) => {
+  updateStore = (event, newState) => {
+    this.store = newState;
+    super.emit('update' + event);
 
-    super.addListener(event, payload => {
-      this.store = reducer(this.store, payload);
+    // With this im going to try to travel in time with a future dev tools
+    // it will probably require immutability like Redux does
+    if (this.logChanges) {
+      console.log(event + ' event changed store to: ');
+      console.log(newState);
+    }
+  }
 
-      // With this im going to try to travel in time with a future dev tools
-      // it will probably require immutability like Redux does
-      if (this.logChanges) console.log(event + ' event changed store to: ' + this.store);
-      super.emit('update' + event);
+  actionAsync = (event, reducer) => {
+    super.addListener(event, async (payload) => {
+      const result = await reducer(this.store, payload);
+
+      this.updateStore(event, result);
 
     });
+  }
 
+  action = (event, reducer) => {
+    super.addListener(event, (payload) => {
+      const result = reducer(this.store, payload);
+
+      this.updateStore(event, result);
+
+    });
   }
 
   dispatch = (event, payload) => {

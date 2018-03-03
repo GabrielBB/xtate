@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import store from './store'
+import store from './store';
 
 class App extends Component {
 
@@ -8,12 +8,12 @@ class App extends Component {
     let articles = this.props.global.articles;
     let lastId = articles.length > 0 ? articles[articles.length - 1].id + 1 : 1;
 
-    store.dispatch('SAVE_ARTICLE', { id: lastId, text: "Article" })
+    store.dispatch('SAVE_ARTICLE', { id: lastId, text: 'Article' });
   }
 
   removeLastArticle = () => {
     if (this.props.global.articles.length > 0) {
-      store.dispatch('DELETE_ARTICLE', this.props.global.articles.length - 1)
+      store.dispatch('DELETE_ARTICLE', this.props.global.articles.length - 1);
     }
 
   }

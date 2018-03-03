@@ -1,0 +1,26 @@
+{
+  "name": "xtate-async-example",
+  "version": "1.0.0",
+  "description": "Simple State Managment library for React",
+  "main": "lib/xtate.min.js",
+  "private": true,
+  "author": "Gabriel Basilio Brito",
+  "bugs": {
+    "url": "https://github.com/GabrielBB/xtate/issues"
+  },
+  "homepage": "https://github.com/GabrielBB/xtate",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "fbemitter": "^2.1.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.11",
+    "xtate": "^1.0.2"
+  }
+}
