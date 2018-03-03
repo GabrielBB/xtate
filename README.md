@@ -9,7 +9,7 @@ over-complexed-boiler-plate-free state management library for React/React Native
 Configure your store with the actions you want to dispatch from your components, just type a function that returns the next state of your application:
 
 ```javascript
-import { Xtate } from 'xtate';
+import Xtate from 'xtate';
 
 const initialXtate = { articles: [] }
 
