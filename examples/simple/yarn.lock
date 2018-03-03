@@ -7179,9 +7179,9 @@ xml-name-validator@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-2.0.1.tgz#4d8b8f1eccd3419aa362061becef515e1e559635"
 
-xtate@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/xtate/-/xtate-1.0.2.tgz#5a8a3ed9e7a6c37cc1b0c3d049053e6b0e90d4ba"
+xtate@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/xtate/-/xtate-1.0.6.tgz#f54ea7eb189da812951bbc02ce1c0326b4c5f3b1"
   dependencies:
     fbemitter "^2.1.1"
     react "^16.2.0"

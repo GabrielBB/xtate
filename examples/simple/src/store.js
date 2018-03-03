@@ -1,4 +1,4 @@
-import { Xtate } from 'xtate';
+import Xtate from 'xtate';
 
 const initialXtate = { articles: [ {id: 1, text: 'Article'} ] };
 
