@@ -74,7 +74,7 @@ store.actionAsync('GET_DOG_IMAGES', async function (xtate, payload) {
 And dispatch it just like a normal action to update the store with the latest dog image and let xtate re-render your component automatically:
 
 ```javascript
-// the async action aboved doesn't use the payload parameter so we just pass the action name
+// the async action we declared doesn't use the payload parameter so we just pass the action name
 store.dispatch('GET_DOG_IMAGES')
 ```
 
