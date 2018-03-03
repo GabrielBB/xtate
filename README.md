@@ -71,6 +71,8 @@ store.actionAsync('GET_DOG_IMAGES', async function (xtate) {
 });
 ```
 
+### You can run the examples in the examples folder
+
 <img src="https://media.giphy.com/media/BCdj4KMUer5mZbAyZV/giphy.gif" width="800" height="300"/>
 
 ### More boiler-plate-free features coming soon!
