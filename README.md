@@ -3,18 +3,10 @@
 ![see module on NPM](https://nodei.co/npm/xtate.png?downloads=true&downloadRank=true&stars=true)
 
 over-complexed-boiler-plate-free state management library for React/React Native
- 
-## THIS LIBRARY IS STILL IN DEVELOPMENT, WORKING ON ASYNC ACTIONS
+
 ## Usage
 
-## Configure your store with the actions you want to dispatch from your components, no need for reducers, just type a function that returns a state
-
-### No need for Spread Operators like in Redux, you decide if you want immutability, modify that object as you wish!
-### No need for Switch and Cases like in Redux, just add different actions as functions
-### No need to return the default state like in Redux
-### Xtate doesn't call every single function you mapped, like Redux does with reducers, Xtate knows which one to call!
-### No need for props mapping, global state comes in a separate object
-### No need to wrap your App component with a "Provider" Tag
+Configure your store with the actions you want to dispatch from your components, just type a function that returns the next state of your application:
 
 ```javascript
 import { Xtate } from 'xtate';
@@ -36,7 +28,14 @@ store.action('DELETE_ARTICLE', function(state, payload) {
 export default store
 ```
 
-## And you're done! You read it correctly: You're done. Now just Import your store to your App component. You can access your store state with "this.props.global" and dispatch your actions with "store.dispatch"
+* No need for Spread Operators like in Redux, you decide if you want immutability, modify that object as you wish
+* No need for Switch and Cases like in Redux, just add different actions as functions
+* No need to return the default state like Redux requires
+* Xtate doesn't call every single function you mapped, like Redux does with reducers, Xtate knows which one to call
+* No need for component props mapping, global state comes in a separate object
+* No need to add other dependencies for async functions
+
+You can access your store state with "this.props.global" and dispatch your actions with "store.dispatch"
 
 ```javascript
 import React, { Component } from 'react';
@@ -61,21 +60,17 @@ class App extends Component {
   }
 }
 
-// For the best optimization, this Component will be re-rendered only when these actions are triggered. This will be optional
-export default store.connect(App, 'SAVE_ARTICLE', 'DELETE_ARTICLE');
+export default store.connect(App);
 ```
 
-## You don't need to add anything else when rendering your app:
-  
- 
+If you need asynchronous executions, like calling an API, just use "actionAsync" instead of "action". For example:
+
 ```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-
-// No need to include a <Provider> ! Render your root component as usual
-ReactDOM.render(<App />, document.getElementById('root'));
+store.actionAsync('GET_DOG_IMAGES', async function (xtate) {
+  return await axios.get('https://dog.ceo/api/breeds/image/random');
+});
 ```
+
 <img src="https://media.giphy.com/media/BCdj4KMUer5mZbAyZV/giphy.gif" width="800" height="300"/>
 
-### State time traveling coming soon and more boiler-plate-free features!
+### More boiler-plate-free features coming soon!
