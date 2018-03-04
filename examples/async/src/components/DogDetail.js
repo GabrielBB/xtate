@@ -6,7 +6,8 @@ class DogDetail extends React.Component {
   render() {
     return (
       <div>
-        {this.props.global.data ? <img src={this.props.global.data.message} /> : null}
+        <span style={{display: 'block'}}>{this.props.title}</span>
+        {<img src={this.props.store.image} />}
       </div>
 
     );
