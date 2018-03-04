@@ -101,14 +101,6 @@ class App extends Component {
 export default store.connect(App);
 ```
 
-If you need asynchronous executions, like data fetching from an API, just use "actionAsync" instead of "action". For example:
-
-```javascript
-store.actionAsync('GET_DOG_IMAGES', async function (xtate, payload) {
-  return await axios.get('https://dog.ceo/api/breeds/image/random');
-});
-```
-
 If you have a component that only dispatches actions but doesn't use the store to render itself then you don't even have to connect the component. For example:
 
 ```javascript
@@ -127,7 +119,16 @@ export default class App extends Component {
 }
 ```
 
-### You can run the examples in the examples folder
+
+### Asynchrony
+
+If you need asynchronous executions, like data fetching from an API, just use "actionAsync" instead of "action". For example:
+
+```javascript
+store.actionAsync('GET_DOG_IMAGES', async function (xtate, payload) {
+  return await axios.get('https://dog.ceo/api/breeds/image/random');
+});
+```
 
 <img src="https://media.giphy.com/media/BCdj4KMUer5mZbAyZV/giphy.gif" width="800" height="300"/>
 
