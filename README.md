@@ -4,6 +4,8 @@
 
 over-complexed-boiler-plate-free state management library for React/React Native
 
+NOTE: I'm actively working on this project so if you find any issues, please, open an issue and i will check it out very quick
+
 ## Usage
 
 Configure your store with the actions you want to dispatch from your components, just type a function that returns the next state of your application:
@@ -66,9 +68,16 @@ export default store.connect(App);
 If you need asynchronous executions, like calling an API, just use "actionAsync" instead of "action". For example:
 
 ```javascript
-store.actionAsync('GET_DOG_IMAGES', async function (xtate) {
+store.actionAsync('GET_DOG_IMAGES', async function (xtate, payload) {
   return await axios.get('https://dog.ceo/api/breeds/image/random');
 });
+```
+
+And dispatch it just like a normal action to update the store with the latest dog image and let xtate re-render your component automatically:
+
+```javascript
+// the async action we declared doesn't use the payload parameter so we just pass the action name
+store.dispatch('GET_DOG_IMAGES')
 ```
 
 ### You can run the examples in the examples folder
