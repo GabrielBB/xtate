@@ -1,28 +1,28 @@
 import React from 'react';
-import store from './store';
+import store, { saveArticle, deleteArticle } from './store';
 
 class App extends React.Component {
 
   // The global application state comes from this.props.global and normal parameters are in this.props.local
   addNewArticle = () => {
-    let articles = this.props.global.articles;
+    let articles = this.props.store.articles;
     let lastId = articles.length > 0 ? articles[articles.length - 1].id + 1 : 1;
 
-    store.dispatch('SAVE_ARTICLE', { id: lastId, text: 'Article' });
+    saveArticle({ id: lastId, text: 'Article' });
   }
 
   removeLastArticle = () => {
-    if (this.props.global.articles.length > 0) {
-      store.dispatch('DELETE_ARTICLE', this.props.global.articles.length - 1);
+    if (this.props.store.articles.length > 0) {
+      deleteArticle(this.props.store.articles.length - 1);
     }
 
   }
 
   render() {
 
-    const articles = this.props.global.articles.length === 0 ?
+    const articles = this.props.store.articles.length === 0 ?
       <span>No Articles to show</span> :
-      <ul>{this.props.global.articles.map(a => <li key={a.id}>{a.text + ' ' + a.id}</li>)}</ul>;
+      <ul>{this.props.store.articles.map(a => <li key={a.id}>{a.text + ' ' + a.id}</li>)}</ul>;
 
     return (
       <div>
