@@ -22,40 +22,76 @@ store.action('SAVE_ARTICLE', function(state, payload) {
     return state;
 })
 
-store.action('DELETE_ARTICLE', function(state, payload) {
-    state.articles.splice(payload, 1)
-    return state;
-})
-
 export default store
 ```
 
-* No need for Spread Operators like in Redux, you decide if you want immutability, modify that object as you wish
+* No need for Spread Operators like in Redux, making your code less readable, we don't need immutability (for time travelling purposes we will implement it in another way, coming soon)
 * No need for Switch and Cases like in Redux, just add different actions as functions
-* No need to return the default state like Redux requires
 * Xtate doesn't call every single function you mapped, like Redux does with reducers, Xtate knows which one to call
-* No need for component props mapping, global state comes in a separate object
-* No need to add other dependencies for async functions
+* No need for component props mapping, store object comes in a separate prop, which is called... store.
+* No need to add other dependencies for async functions (like data fetching)
 
-You can access your store state with "this.props.global" and dispatch your actions with "store.dispatch"
+You can access your store state with "this.props.store" and dispatch your actions with "store.dispatch"
 
 ```javascript
 import React, { Component } from 'react';
 import store from './store/index'
 
 class App extends Component {
-  // The global application state comes from this.props.global and normal parameters are in this.props.local
   addNewArticle = () => {
     store.dispatch('SAVE_ARTICLE', { id: 2, text: "Article" })
-  }
-
+    }
   }
 
   render() {
     return (
       <div>
         <button onClick={this.addNewArticle}>Add Article</button>
-        <ul>{this.props.global.articles.map(a => <li key={a.id}>{a.id + ' - ' + a.text}</li>)}</ul>
+        <ul>{this.props.store.articles.map(a => <li key={a.id}>{a.id + ' - ' + a.text}</li>)}</ul>
+      </div>
+
+    );
+  }
+}
+
+export default store.connect(App);
+```
+## RECOMMENDED USAGE
+
+The action function returns another function that internally calls the dispatch method for you! So you can declare your actions this way:
+
+```javascript
+import Xtate from 'xtate';
+
+const initialXtate = { articles: [] }
+
+const store = new Xtate(initialXtate)
+
+export const saveArticle = store.action('SAVE_ARTICLE', function(state, payload) {
+    state.articles.push(payload)
+    return state;
+})
+
+export default store
+```
+
+Then in your component you can import your action and just call it like a normal function:
+
+```javascript
+import React, { Component } from 'react';
+import store, { saveArticle } from './store/index'
+
+class App extends Component {
+  addNewArticle = () => {
+    saveArticle({ id: 2, text: "Article" })
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.addNewArticle}>Add Article</button>
+        <ul>{this.props.store.articles.map(a => <li key={a.id}>{a.id + ' - ' + a.text}</li>)}</ul>
       </div>
 
     );
@@ -65,7 +101,7 @@ class App extends Component {
 export default store.connect(App);
 ```
 
-If you need asynchronous executions, like calling an API, just use "actionAsync" instead of "action". For example:
+If you need asynchronous executions, like data fetching from an API, just use "actionAsync" instead of "action". For example:
 
 ```javascript
 store.actionAsync('GET_DOG_IMAGES', async function (xtate, payload) {
@@ -73,15 +109,26 @@ store.actionAsync('GET_DOG_IMAGES', async function (xtate, payload) {
 });
 ```
 
-And dispatch it just like a normal action to update the store with the latest dog image and let xtate re-render your component automatically:
+If you have a component that only dispatches actions but doesn't use the store to render itself then you don't even have to connect the component. For example:
 
 ```javascript
-// the async action we declared doesn't use the payload parameter so we just pass the action name
-store.dispatch('GET_DOG_IMAGES')
+import React, { Component } from 'react';
+import { saveArticle } from './store/index'
+
+export default class App extends Component {
+  addNewArticle = () => {
+    saveArticle({ id: 2, text: "Article" })
+    }
+  }
+
+  render() {
+    return (<button onClick={this.addNewArticle}>Add Article</button>)
+  }
+}
 ```
 
 ### You can run the examples in the examples folder
 
 <img src="https://media.giphy.com/media/BCdj4KMUer5mZbAyZV/giphy.gif" width="800" height="300"/>
 
-### More boiler-plate-free features coming soon!
+### Time travelling coming soon
