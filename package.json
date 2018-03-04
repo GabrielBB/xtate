@@ -1,8 +1,8 @@
 {
   "name": "xtate",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Simple State Managment library for React",
-  "main": "lib/xtate.min.js",
+  "main": "lib/xtate.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run test",
     "dev": "webpack --progress --colors --watch --env dev",

@@ -15,13 +15,21 @@ export default class Xtate extends EventEmitter {
     // With this im going to try to travel in time with a future dev tools
     // it will probably require immutability like Redux does
     if (this.logChanges) {
-      console.log(event + ' event changed store to: ');
+      console.log(event + ' action changed store to: ');
       console.log(newState);
     }
   }
 
+  createAction(event, callback) {
+    super.addListener('_' + event, callback);
+
+    return (payload) => {
+      this.dispatch(event, payload);
+    };
+  }
+
   actionAsync = (event, reducer) => {
-    super.addListener('_' + event, async (payload) => {
+    return this.createAction(event, async (payload) => {
       const result = await reducer(this.store, payload);
 
       this.updateStore(event, result);
@@ -30,7 +38,7 @@ export default class Xtate extends EventEmitter {
   }
 
   action = (event, reducer) => {
-    super.addListener('_' + event, (payload) => {
+    return this.createAction(event, (payload) => {
       const result = reducer(this.store, payload);
 
       this.updateStore(event, result);
@@ -49,27 +57,27 @@ export default class Xtate extends EventEmitter {
 
       constructor() {
         super();
-
         this.state = xtate.store;
-
-        this.addListenerForEvents();
       }
 
-      addListenerForEvents() {
+      componentDidMount() {
         const component = this;
 
-        xtate.addListener('_', () => {
+        this.listener = xtate.addListener('_', () => {
           component.setState(xtate.store);
         });
+      }
+
+      componentWillUnmount() {
+        this.listener.remove();
       }
 
       render() {
         return (
           // The Store (the global state) and the props the user passes are divided, not mixed like in Redux
-          <ChildComponent global={this.state} local={this.props} />
+          <ChildComponent store={this.state} {...this.props} />
         );
       }
     };
   }
-
 }
