@@ -8,11 +8,24 @@ NOTE: I'm actively working on this project so if you find any issues, please, op
 
 ## Usage
 
+First let's create an Xtate instance:
+
+```javascript
+import Xtate from 'xtate';
+
+const initialState = { articles: [] };
+
+export default new Xtate(initialState); // Exporting the store so we can use it later to connect the components to it
+```
+
 Declare the functions you want to use as actions to be dispatched to the store, just type a function that returns the next state of your application, using the payload parameter you will pass later:
 
 ```javascript
-export function saveArticle(state, payload) {
-    return { ...state, articles: [...state.articles, payload] };
+
+// payload is anything you pass to the function
+
+export function saveArticle(prevState, payload) {
+    return { ...prevState, articles: [...prevState.articles, payload] }; // Don't mutate the store, we need to return a new one
 }
 ```
 
@@ -22,11 +35,11 @@ export function saveArticle(state, payload) {
 * No need to add other dependencies for async functions (like data fetching)
 * No need to create Constant strings to reference actions. The reference to those actions is the function itself!
 
-You can access your store state with "this.props.store" and dispatch your actions with "this.props.dispatch"
+You can access your store state with "this.props.store" and dispatch your actions with "this.props.dispatch". We connect the component to the store (so our component is always automatically refreshed) with the function "store.connect", store is the Xtate instance we just created.
 
 ```javascript
 import React from 'react';
-import store from './store';
+import store from './store'; // Import the store 
 
 // in this js file is the function we just declared, we need to import it
 import { saveArticle } from './actions/articleActions';
@@ -60,9 +73,9 @@ If you need asynchronous executions, like data fetching from an API, just use th
 ```javascript
 import axios from 'axios';
 
-export async function updateDogImage(state, payload) {
+export async function updateDogImage(prevState, payload) {
     const dog = await axios.get('https://dog.ceo/api/breeds/image/random');
-    return { ...state, image: dog.data.message };
+    return { ...prevState, image: dog.data.message };
 }
 ```
 And dispatch it from your component, again, using async/await (you can also handle the promises the traditional way)
