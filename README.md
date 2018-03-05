@@ -62,7 +62,7 @@ class App extends React.Component {
   }
 }
 
-export default store.connect(App);
+export default store.connect(App); // Connecting the component to the store
 
 ```
 
