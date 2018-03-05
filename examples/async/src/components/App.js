@@ -1,9 +1,7 @@
 import React from 'react';
 import Button from './Button';
 import DogDetail from './DogDetail';
-import Xtate from 'xtate';
-
-const store = new Xtate({});
+import store from '../store/index'
 
 class App extends React.Component {
 
