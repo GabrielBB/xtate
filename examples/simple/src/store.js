@@ -6,7 +6,6 @@ const store = new Xtate(initialXtate);
 
 export const saveArticle = store.action('SAVE_ARTICLE', function (state, payload) {
   state.articles.push(payload);
-  Object.assign({}, state).articles.push({id: -1, text: 'hahaha'});
   return state;
 });
 
