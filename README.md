@@ -30,6 +30,7 @@ export default store
 * Xtate doesn't call every single function you mapped, like Redux does with reducers, Xtate knows which one to call
 * No need for component props mapping, store object comes in a separate prop, which is called... store.
 * No need to add other dependencies for async functions (like data fetching)
+* No need to create Constant strings to reference actions!
 
 You can access your store state with "this.props.store" and dispatch your actions with "store.dispatch"
 
@@ -56,9 +57,9 @@ class App extends Component {
 
 export default store.connect(App);
 ```
-## RECOMMENDED USAGE
+## RECOMMENDED USAGE (Leaving more boilerplate in the past)
 
-The action function returns another function that internally calls the dispatch method for you! So you can declare your actions this way:
+You don't need to create a JS file with constant strings to reference your action names. The xtate action function returns another function that internally calls the dispatch method for you! So you can declare your actions this way:
 
 ```javascript
 import Xtate from 'xtate';
