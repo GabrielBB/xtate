@@ -102,6 +102,8 @@ class App extends Component {
 export default store.connect(App);
 ```
 
+### Don't connect it to the store if it's not needed
+
 If you have a component that only dispatches actions but doesn't use the store to render itself then you don't even have to connect the component. For example:
 
 ```javascript
