@@ -1,6 +1,6 @@
 {
   "name": "xtate",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "Simple State Managment library for React",
   "main": "lib/xtate.js",
   "scripts": {
@@ -47,7 +47,9 @@
     "yargs": "^10.0.3"
   },
   "dependencies": {
-    "fbemitter": "^2.1.1",
-    "react": "^16.2.0"
+    "fbemitter": "^2.1.1"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0"
   }
 }

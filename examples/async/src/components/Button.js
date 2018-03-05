@@ -1,17 +1,30 @@
 import React from 'react';
-import { clearDogData, updateDogImage } from '../store';
+import store from '../store/index'
+import { clearDogData, updateDogImage } from '../actions/dogActions';
 
-export default class Button extends React.Component {
+class Button extends React.Component {
+
+  updateDog = async () => {
+    try {
+      await this.props.dispatch(updateDogImage)
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
+  clearDog = () => {
+    this.props.dispatch(clearDogData)
+  }
 
   render() {
     return (
       <div>
-        <button onClick={updateDogImage}>Load random dog image</button>
-        <button onClick={clearDogData}>Remove Dog Image from the store</button>
+        <button onClick={this.updateDog}>Load random dog image</button>
+        <button onClick={this.clearDog}>Remove Dog Image from the store</button>
       </div>
 
     );
   }
 }
 
-// No need to add store.connect(Button) because this component is not using the state to render itself
+export default store.connect(Button);
