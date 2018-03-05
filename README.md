@@ -121,9 +121,9 @@ export default class App extends Component {
 ```
 
 
-### Asynchrony
+### Asynchrony (Let's just use... javascript)
 
-If you need asynchronous executions, like data fetching from an API, just use "actionAsync" instead of "action". For example:
+If you need asynchronous executions, like data fetching from an API, just use "actionAsync" instead of "action" and take advantage of the great "async" and "await" keywords the lenguage already gave us. For example:
 
 ```javascript
 store.actionAsync('GET_DOG_IMAGES', async function (xtate, payload) {
@@ -132,5 +132,3 @@ store.actionAsync('GET_DOG_IMAGES', async function (xtate, payload) {
 ```
 
 <img src="https://media.giphy.com/media/BCdj4KMUer5mZbAyZV/giphy.gif" width="800" height="300"/>
-
-### Time travelling coming soon
