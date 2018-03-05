@@ -8,47 +8,39 @@ NOTE: I'm actively working on this project so if you find any issues, please, op
 
 ## Usage
 
-Configure your store with the actions you want to dispatch from your components, just type a function that returns the next state of your application:
+Declare the functions you want to use as actions to be dispatched to the store, just type a function that returns the next state of your application, using the payload parameter you will pass later:
 
 ```javascript
-import Xtate from 'xtate';
-
-const initialXtate = { articles: [] }
-
-const store = new Xtate(initialXtate)
-
-store.action('SAVE_ARTICLE', function(state, payload) {
-    state.articles.push(payload)
-    return state;
-})
-
-export default store
+export function saveArticle(state, payload) {
+    return { ...state, articles: [...state.articles, payload] };
+}
 ```
 
-* No need for Spread Operators like in Redux, making your code less readable, we don't need immutability (for time travelling purposes we will implement it in another way, coming soon)
 * No need for Switch and Cases like in Redux, just add different actions as functions
-* Xtate doesn't call every single function you mapped, like Redux does with reducers, Xtate knows which one to call
+* Xtate doesn't call every single function you mapped, like Redux does with reducers, you will tell which one is the correct action
 * No need for component props mapping, store object comes in a separate prop, which is called... store.
 * No need to add other dependencies for async functions (like data fetching)
-* No need to create Constant strings to reference actions!
+* No need to create Constant strings to reference actions. The reference to those actions is the function itself!
 
-You can access your store state with "this.props.store" and dispatch your actions with "store.dispatch"
+You can access your store state with "this.props.store" and dispatch your actions with "this.props.dispatch"
 
 ```javascript
-import React, { Component } from 'react';
-import store from './store/index'
+import React from 'react';
+import store from './store';
+import { saveArticle } from './actions/articleActions'; // in this js file is the function we just declared, we need to import it
 
-class App extends Component {
+class App extends React.Component {
+
+  // Save a new article object, as you can see, we are telling the store which is the action we want to dispatch, the one we imported
   addNewArticle = () => {
-    store.dispatch('SAVE_ARTICLE', { id: 2, text: "Article" })
-    }
+    this.props.dispatch(saveArticle, { id: 1, text: 'Article' }); 
   }
 
   render() {
     return (
       <div>
         <button onClick={this.addNewArticle}>Add Article</button>
-        <ul>{this.props.store.articles.map(a => <li key={a.id}>{a.id + ' - ' + a.text}</li>)}</ul>
+        <ul>{this.props.store.articles.map(a => <li key={a.id}>{a.text}</li>)}</ul>
       </div>
 
     );
@@ -56,81 +48,45 @@ class App extends Component {
 }
 
 export default store.connect(App);
+
 ```
-## RECOMMENDED USAGE (Leaving more boilerplate in the past)
-
-You don't need to create a JS file with constant strings to reference your action names. The xtate action function returns another function that internally calls the dispatch method for you! So you can declare your actions this way:
-
-```javascript
-import Xtate from 'xtate';
-
-const initialXtate = { articles: [] }
-
-const store = new Xtate(initialXtate)
-
-export const saveArticle = store.action('SAVE_ARTICLE', function(state, payload) {
-    state.articles.push(payload)
-    return state;
-})
-
-export default store
-```
-
-Then in your component you can import your action and just call it like a normal function:
-
-```javascript
-import React, { Component } from 'react';
-import store, { saveArticle } from './store/index'
-
-class App extends Component {
-  addNewArticle = () => {
-    saveArticle({ id: 2, text: "Article" })
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <button onClick={this.addNewArticle}>Add Article</button>
-        <ul>{this.props.store.articles.map(a => <li key={a.id}>{a.id + ' - ' + a.text}</li>)}</ul>
-      </div>
-
-    );
-  }
-}
-
-export default store.connect(App);
-```
-
-### Don't connect it to the store if it's not needed
-
-If you have a component that only dispatches actions but doesn't use the store to render itself then you don't even have to connect the component. For example:
-
-```javascript
-import React, { Component } from 'react';
-import { saveArticle } from './store/index'
-
-export default class App extends Component {
-  addNewArticle = () => {
-    saveArticle({ id: 2, text: "Article" })
-    }
-  }
-
-  render() {
-    return (<button onClick={this.addNewArticle}>Add Article</button>)
-  }
-}
-```
-
 
 ### Asynchrony (Let's just use... javascript)
 
-If you need asynchronous executions, like data fetching from an API, just use "actionAsync" instead of "action" and take advantage of the great "async" and "await" keywords the lenguage already gave us. For example:
+If you need asynchronous executions, like data fetching from an API, just use the great async and await keywords the language already gave us, no need to learn new concepts or installing new dependencies
 
 ```javascript
-store.actionAsync('GET_DOG_IMAGES', async function (xtate, payload) {
-  return await axios.get('https://dog.ceo/api/breeds/image/random');
-});
+import axios from 'axios';
+
+export async function updateDogImage(state, payload) {
+    const dog = await axios.get('https://dog.ceo/api/breeds/image/random');
+    return { ...state, image: dog.data.message };
+}
+```
+And dispatch it from your component, again, using async/await (you can also handle the promises the traditional way)
+
+```javascript
+import React from 'react';
+import store from '../store/index'
+import { updateDogImage } from '../actions/dogActions';
+
+class Button extends React.Component {
+
+  // Let's declare this function as async and wait for the response so we can handle the promise. 
+  getNewDogImage = async () => {
+    try {
+      await this.props.dispatch(updateDogImage) // Passing the function we imported
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
+  render() {
+    return <button onClick={this.getNewDogImage}>Load random dog image</button>;
+  }
+}
+
+export default store.connect(Button);
 ```
 
 <img src="https://media.giphy.com/media/BCdj4KMUer5mZbAyZV/giphy.gif" width="800" height="300"/>
