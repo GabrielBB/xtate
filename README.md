@@ -27,7 +27,9 @@ You can access your store state with "this.props.store" and dispatch your action
 ```javascript
 import React from 'react';
 import store from './store';
-import { saveArticle } from './actions/articleActions'; // in this js file is the function we just declared, we need to import it
+
+// in this js file is the function we just declared, we need to import it
+import { saveArticle } from './actions/articleActions';
 
 class App extends React.Component {
 
@@ -72,7 +74,7 @@ import { updateDogImage } from '../actions/dogActions';
 
 class Button extends React.Component {
 
-  // Let's declare this function as async and wait for the response so we can handle the promise. 
+  // Let's declare this function as async
   getNewDogImage = async () => {
     try {
       await this.props.dispatch(updateDogImage) // Passing the function we imported
