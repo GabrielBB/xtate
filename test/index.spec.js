@@ -1,7 +1,7 @@
 /* global describe, it, before */
 
 import chai from 'chai';
-import Xtate from '../lib/xtate.min';
+import Xtate from '../lib/xtate';
 
 chai.expect();
 

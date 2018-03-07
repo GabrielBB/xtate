@@ -1,8 +1,8 @@
 {
   "name": "xtate",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple State Managment library for React",
-  "main": "lib/xtate.js",
+  "main": "lib/xtate.min.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run test",
     "dev": "webpack --progress --colors --watch --env dev",
@@ -14,13 +14,10 @@
     "url": "https://github.com/GabrielBB/xtate.git"
   },
   "keywords": [
-    "webpack",
-    "es6",
-    "starter",
-    "library",
-    "universal",
-    "umd",
-    "commonjs"
+    "xtate",
+    "state-managment",
+    "redux",
+    "javascript"
   ],
   "author": "Gabriel Basilio Brito",
   "bugs": {
@@ -30,7 +27,6 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
@@ -40,8 +36,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.1.2",
-    "eslint": "^4.13.1",
-    "eslint-loader": "^1.9.0",
     "mocha": "^4.0.1",
     "webpack": "^3.10.0",
     "yargs": "^10.0.3"

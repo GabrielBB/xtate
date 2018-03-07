@@ -36,11 +36,6 @@ const config = {
         query: {
           presets: ['es2015', 'react', 'stage-0']
         }
-      },
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
       }
     ]
   },
