@@ -19,7 +19,6 @@ async function dispatch(actionReducer, payload) {
   const result = await actionReducer(this.store, payload);
 
   updateStore.apply(this, [actionReducer.name, result]);
-
 };
 
 export default class Xtate extends EventEmitter {
