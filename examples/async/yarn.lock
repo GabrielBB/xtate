@@ -5473,7 +5473,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.6.0:
+prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   dependencies:
@@ -7192,12 +7192,12 @@ xml-name-validator@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-2.0.1.tgz#4d8b8f1eccd3419aa362061becef515e1e559635"
 
-xtate@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/xtate/-/xtate-1.0.6.tgz#f54ea7eb189da812951bbc02ce1c0326b4c5f3b1"
+xtate@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/xtate/-/xtate-3.0.1.tgz#61f2386df2048be4c043188c37383912af3c0ba1"
   dependencies:
     fbemitter "^2.1.1"
-    react "^16.2.0"
+    prop-types "^15.6.1"
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.1"

@@ -16,10 +16,9 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "fbemitter": "^2.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.11",
-    "xtate": "^1.0.8"
+    "xtate": "^3.0.1"
   }
 }
