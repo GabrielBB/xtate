@@ -1,7 +1,5 @@
 /* global describe, it, before */
-
 import chai from 'chai';
-import Xtate from '../lib/xtate';
 
 chai.expect();
 
@@ -11,13 +9,11 @@ const sleep = (ms) => {
 
 let lib;
 
-describe('When an async action function is registered', () => {
+describe('Before test', () => {
   before(() => {
-    lib = new Xtate();
-
   });
-  describe('When an async action function is registered', () => {
-    it('It should recognize it is async, apply an await and update the store when finished', async () => {
+  describe('Test', () => {
+    it('It should be true', async () => {
       chai.expect(true).to.be.equal(true);
     });
   });

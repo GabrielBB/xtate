@@ -1,6 +1,7 @@
 import { EventEmitter } from 'fbemitter';
 
 export default class StateEmitter extends EventEmitter {
+  
   constructor(initialState = {}, logChanges = false) {
     super();
     this.store = initialState;
@@ -21,7 +22,7 @@ export default class StateEmitter extends EventEmitter {
         console.log(newState);
       }
     } else {
-      console.error(functionName + ' tried to mutate the store. Ignoring change because immutability is required');
+      console.error(functionName + ' tried to mutate the store state. Ignoring change because immutability is required');
     }
 
   };
@@ -29,7 +30,7 @@ export default class StateEmitter extends EventEmitter {
   dispatch = async (actionReducer, payload) => {
     const result = await actionReducer(this.store, payload);
 
-    updateStore(actionReducer.name, result);
+    this.updateStore(actionReducer.name, result);
 
   };
 }

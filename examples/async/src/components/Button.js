@@ -1,5 +1,5 @@
 import React from 'react';
-import store from '../store/index'
+import { Connect } from 'xtate';
 import { clearDogData, updateDogImage } from '../actions/dogActions';
 
 class Button extends React.Component {
@@ -27,4 +27,4 @@ class Button extends React.Component {
   }
 }
 
-export default store.connect(Button);
+export default Connect(Button);

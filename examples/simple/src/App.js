@@ -1,15 +1,14 @@
 import React from 'react';
-import store from './store';
+import { Connect } from 'xtate';
 import { deleteArticle, saveArticle } from './actions/articleActions';
 
 class App extends React.Component {
 
-  // The global application state comes from this.props.global and normal parameters are in this.props.local
   addNewArticle = () => {
     let articles = this.props.store.articles;
     let lastId = articles.length > 0 ? articles[articles.length - 1].id + 1 : 1;
 
-    this.props.dispatch(saveArticle, { id: 1, text: 'Article' });
+    this.props.dispatch(saveArticle, { id: lastId, text: 'Article' });
   }
 
   removeLastArticle = () => {
@@ -38,4 +37,4 @@ class App extends React.Component {
 }
 
 // This Component will be re-rendered only when these actions are triggered. This will be optional
-export default store.connect(App);
+export default Connect(App);

@@ -1,22 +1,17 @@
 import React from 'react';
 import Button from './Button';
 import DogDetail from './DogDetail';
-import store from '../store/index'
+import { StoreProvider } from 'xtate';
 
-class App extends React.Component {
+export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <StoreProvider>
         <Button />
-        {
-          this.props.store.image ?
-            <DogDetail title='Wof Wof' /> : null
-        }
-
-      </div>
+        <DogDetail />
+      </StoreProvider>
     );
   }
 }
 
-export default store.connect(App);

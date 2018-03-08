@@ -1,17 +1,19 @@
 import React from 'react';
-import store from '../store/index';
+import { Connect } from 'xtate';
 
 class DogDetail extends React.Component {
 
   render() {
+    const image = this.props.store.image ? <img alt="dog" src={this.props.store.image} /> : null;
+
     return (
       <div>
-        <span style={{display: 'block'}}>{this.props.title}</span>
-        {<img src={this.props.store.image} />}
+        <span style={{ display: 'block' }}>{this.props.title}</span>
+        {image}
       </div>
 
     );
   }
 }
 
-export default store.connect(DogDetail);
+export default Connect(DogDetail);

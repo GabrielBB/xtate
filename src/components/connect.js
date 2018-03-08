@@ -1,25 +1,21 @@
-import { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import StateEmitter from '../util/state-emitter';
 
-export const Connect = (ComponentToConnect) => {
-  const xtate = this;
+const Connect = (ComponentToConnect) => {
 
-  return class extends Component {
+  class StoreHOC extends React.Component {
 
-    static contextTypes = {
-      store: PropTypes.object.isRequired
-    }
-
-    constructor() {
+    constructor(props, context) {
       super();
-      this.state = this.context.store
+      this.state = context.xtate.store
     }
 
     componentDidMount() {
-      const component = this;
+      //const component = this;
 
-      this.listener = xtate.addListener('_', () => {
-        component.setState(xtate.store);
+      this.listener = this.context.xtate.addListener('_', () => {
+        this.setState(this.context.xtate.store);
       });
     }
 
@@ -30,8 +26,16 @@ export const Connect = (ComponentToConnect) => {
     render() {
       return (
         <ComponentToConnect store={this.state} {...this.props}
-          dispatch={xtate.dispatch} />
+          dispatch={this.context.xtate.dispatch} />
       );
     }
   };
+
+  StoreHOC.contextTypes = {
+    xtate: PropTypes.instanceOf(StateEmitter)
+  }
+
+  return StoreHOC;
 }
+
+export default Connect;
