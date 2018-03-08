@@ -25,6 +25,24 @@ ReactDOM.render(
     , document.getElementById('root'));
 ```
 
+#### Connecting the needed components to the store
+
+Import the Connect function from Xtate and pass your components to it to connect them to the store so they automatically refresh when the store state changes.
+
+```javascript
+import React from 'react';
+import { Connect } from 'xtate';
+
+class App extends React.Component {
+
+  render() {
+    return <div></div>;
+  }
+}
+
+export default Connect(App);
+```
+
 ### Creating Actions
 
 Declare the functions you want to use as actions to be dispatched to the store, just type a function that returns the next state of your application. A payload is any parameter we pass to that action so it can create the new state. 
@@ -42,24 +60,6 @@ export function saveArticle(prevState, payload) {
 * Xtate doesn't call every single function you mapped, like Redux does with reducers, you will tell which one is the correct action
 * No need to add other dependencies for async functions (like data fetching)
 * No need to create Constant strings to reference actions. The reference to those actions is the function itself!
-
-### Connecting the needed components to the store
-
-Import the Connect function from Xtate and pass your components to it to connect them to the store so they automatically refresh when the store state changes.
-
-```javascript
-import React from 'react';
-import { Connect } from 'xtate';
-
-class App extends React.Component {
-
-  render() {
-    return <div></div>;
-  }
-}
-
-export default Connect(App);
-```
 
 ### Accessing store state
 
