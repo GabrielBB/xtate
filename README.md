@@ -63,7 +63,7 @@ export default Connect(App);
 
 ### Accessing store state
 
-You can access your store state with "this.props.store". This object will be the one you pass to the StoreProvider in the "Setting up Xtate" section. 
+You can access your store state with "this.props.store". This object will be the one you passed to the StoreProvider in the "Setting up Xtate" section. 
 
 ```javascript
 
