@@ -1,6 +1,5 @@
 # Xtate
-
-![see module on NPM](https://nodei.co/npm/xtate.png?downloads=true&downloadRank=true&stars=true)
+[![NPM](https://nodei.co/npm/xtate.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/xtate)
 
 over-complexed-boiler-plate-free state management library for React/React Native
 
