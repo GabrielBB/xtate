@@ -8,7 +8,6 @@ class DogDetail extends React.Component {
 
     return (
       <div>
-        <span style={{ display: 'block' }}>{this.props.title}</span>
         {image}
       </div>
 
