@@ -7,7 +7,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <StoreProvider>
+      <StoreProvider store={{}}>
         <Button />
         <DogDetail />
       </StoreProvider>
