@@ -30,4 +30,9 @@ node_modules
 .idea
 .vscode
 
+# Ignoring build files
+lib/xtate.js
+lib/xtate.min.js
+lib/xtate.js.map
+
 .DS_Store
