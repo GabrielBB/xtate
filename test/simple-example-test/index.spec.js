@@ -18,11 +18,13 @@ test('Check that lowest component has access to the store', () => {
     .toBeDefined()
 });
 
-test('Check that actions dispatching communicate the changes to the components', () => {
+test('Check that actions dispatching communicate the changes to the components', (done) => {
   appWrapper.find('button').simulate('click');
-  return new Promise((resolve) => setTimeout(resolve, 1000)).then(r => {
+  setTimeout(()=>{
+    
     expect(appWrapper.text().indexOf('No Articles to show') === -1).toBeTruthy();
-
     expect(appWrapper.html()).toContain('<li>Article 1</li>');
-  });
+    done();
+
+   }, 1000);
 });
