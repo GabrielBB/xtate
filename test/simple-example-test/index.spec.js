@@ -7,16 +7,22 @@ import { StoreProvider } from '../../lib/xtate';
 
 Enzyme.configure({ adapter: new Adapter() })
 
-test('Check Store is provided and Store changes are reflected in the component', () => {
+const appWrapper = mount(<StoreProvider store={{ articles: [] }}><App /></StoreProvider>);
 
-  const appWrapper = mount(<StoreProvider store={{ articles: [] }}><App /></StoreProvider>);
+test('Check that component is properly mounted', () => {
+  expect(appWrapper.text()).toBe('No Articles to show');
+});
 
-  expect(appWrapper.text().indexOf('No Articles to show') === -1).toBeFalsy();
+test('Check that lowest component has access to the store', () => {
+  expect(appWrapper.childAt(0).childAt(0).instance().context.xtate.store.articles)
+    .toBeDefined()
+});
 
+test('Check that actions dispatching communicate the changes to the components', () => {
   appWrapper.find('button').simulate('click');
-
   return new Promise((resolve) => setTimeout(resolve, 1000)).then(r => {
     expect(appWrapper.text().indexOf('No Articles to show') === -1).toBeTruthy();
-  });
 
+    expect(appWrapper.html()).toContain('<li>Article 1</li>');
+  });
 });
