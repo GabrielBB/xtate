@@ -36,5 +36,4 @@ class App extends React.Component {
   }
 }
 
-// This Component will be re-rendered only when these actions are triggered. This will be optional
 export default Connect(App);
